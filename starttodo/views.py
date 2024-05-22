@@ -35,4 +35,9 @@ def Delete(request,pk):
     todo = Todo_Table.objects.get(id=pk)
     todo.delete()
     return redirect('home')
+
+def Delete_all(request):
+    todo = Todo_Table.objects.all()
+    todo.delete()
+    return redirect('home')
     
