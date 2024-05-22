@@ -18,5 +18,21 @@ def Create(request):
     
 def Edit(request,pk):
     todo = Todo_Table.objects.get(id=pk)
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        status = request.POST.get('status')
+        #Line number 20 ko todo object of Todo_Table
+        todo.Name = name
+        todo.Description = description
+        todo.Status = status
+        todo.save()
+        return redirect('home')
     edit_todo = {'todo' : todo}
     return render(request,'edit.html', context=edit_todo)
+
+def Delete(request,pk):
+    todo = Todo_Table.objects.get(id=pk)
+    todo.delete()
+    return redirect('home')
+    
