@@ -9,22 +9,24 @@
 </head>
 <body>
     <h1>This is a Homepage</h1>
+    {% include 'nav.html'%}
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Status</th>
+            <th scope="col"></th>
+            
           </tr>
         </thead>
         <tbody>
             {% for todo in datas %}
                 <tr>
-                    <th scope="row">{{todo.id}}</th>
                     <td>{{todo.Name}}</td>
                     <td>{{todo.Description}}</td>
                     <td>{{todo.Status}}</td>
+                    <td><a href="{% url 'edit' pk=todo.id %}"><button type="button" class="btn btn-success">Edit</button></a>  <a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
                 </tr>
             {%endfor%}
         </tbody>

@@ -13,4 +13,10 @@ def Create(request):
         status = request.POST.get('status')
         Todo_Table.objects.create(Name = name, Description = description, Status = status)
         return redirect('home')
-    return render(request,'create.html')
+    else:
+        return render(request,'create.html')
+    
+def Edit(request,pk):
+    todo = Todo_Table.objects.get(id=pk)
+    edit_todo = {'todo' : todo}
+    return render(request,'edit.html', context=edit_todo)

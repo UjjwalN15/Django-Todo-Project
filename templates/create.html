@@ -9,6 +9,7 @@
 </head>
 <body>
     <h1>This is a Create Page</h1>
+    {% include 'nav.html'%}
     <form method = "POST">
         {%csrf_token%}
         <div class="mb-3">
@@ -16,8 +17,8 @@
           <input type="text" name = "name" class="form-control" id="name">
         </div>
         <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <input type="textarea" name = "description" class="form-control" id="description">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" class="form-control" id="description">{{ edit_todo.Description }}</textarea>
         </div>
         <div class="mb-3">
             <label for="status" class="form-label">Choose the Status</label>
