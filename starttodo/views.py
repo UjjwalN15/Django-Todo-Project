@@ -5,6 +5,8 @@ def home (request):
     all_data = Todo_Table.objects.all()
     data = {"datas" : all_data} 
     return render(request,'index.html', context = data )
+def Admin(request):
+    return render(request, 'admin', context={"current_url": "admin"})
 
 def Create(request):
     if request.method == 'POST':
@@ -14,7 +16,7 @@ def Create(request):
         Todo_Table.objects.create(Name = name, Description = description, Status = status)
         return redirect('home')
     else:
-        return render(request,'create.html')
+        return render(request,'create.html', context={"current_url": "create"})
     
 def Edit(request,pk):
     todo = Todo_Table.objects.get(id=pk)
